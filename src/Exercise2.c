@@ -53,6 +53,25 @@ void Ex2(int arr[], int m, int n){
 	int a[SIZE][SIZE];
 	Array2Dconverter(arr,a,m,n);
 	//Your codes here
+	int i,j;
+	for(int i=0;i<=n;i++){
+		if(i%2==0){
+			for(int j=0;j<=m;j++){
+				if(a[i][j]<a[i][j+1]){
+					int tam=a[i][j];
+					a[i][j]=a[i][j+1];
+					a[i][j+1]=tam;
+				}
+			}
+		}
+		else{
+			for(int j=0;j<=m;j++){
+				if(a[i][j]>a[i][j+1]){
+					int tam=a[i][j];
+					a[i][j]=a[i][j+1];
+					a[i][j+1]=tam;
+		}
+	}
 
 	printArray(a, m, n);
 }
@@ -62,7 +81,7 @@ int main(int argc, char *argv[]) {
 	int row = atoi(argv[1]);
 	int col = atoi(argv[2]);
 	argc-=3;
-	int testcase[argc],i;
+	int testcase[100],i;
 	for(i=0; i<argc;i++){
 		testcase[i] = atoi(argv[i+3]);
 	}

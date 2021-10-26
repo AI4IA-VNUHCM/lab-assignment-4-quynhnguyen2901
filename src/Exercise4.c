@@ -49,22 +49,50 @@ void printArray(int a[SIZE][SIZE], int m, int n)
 
 void insertRow(int arr[], int a[SIZE][SIZE],int rowIndex, int m, int n){
 	//Your codes here
-	
+	for(int i=m;i>rowIndex;i--){
+		for(int j=0;j<n;j++){
+			a[i][j]=a[i-1][j];
+		}
+	}
+	for(int i=0;i<n;i++){
+		a[rowIndex][i]=a[i];
+	}
+	m=m+1;
 }
 
 void removeRow(int a[SIZE][SIZE], int rowIndex, int m, int n){
 	//Your codes here
-	
+	for(int i=rowIndex;i<m-1;i++){
+		for(int j=0;j<n;j++){
+
+			a[i][j]=a[i+1][j];
+		}
+	}
+	m--;
+
 }
 
 void insertCol(int arr[], int a[SIZE][SIZE],int colIndex, int m, int n){
 	//Your codes here
-	
+	for(int i=n;i>colIndex;i--){
+		for(int j=0;j<m;j++){
+			a[i][j]=a[i][j-1];
+		}
+	}
+	for(int i;i<m;++i){
+		a[i][colIndex]=arr[i];
+	}
+	n=n+1;
 }
 
 void removeCol(int a[SIZE][SIZE], int colIndex, int m, int n){
 	//Your codes here
-	
+	for(int i=colIndex;i<n-1;i++){
+		for(int j=0;j<m;j++){
+			a[i][j]=a[i][j+1];
+		}
+	}
+	n--;
 }
 
 int main(int argc, char *argv[]) {
@@ -82,7 +110,7 @@ int main(int argc, char *argv[]) {
 	int a[SIZE][SIZE];
 	if(choice == 2 || choice == 4){
 		argc-=5;
-		int testcase[argc],i;
+		int testcase[100],i;
 		for(i=0; i<argc;i++){
 			testcase[i] = atoi(argv[i+5]);
 		}
@@ -94,13 +122,13 @@ int main(int argc, char *argv[]) {
 
 	}
 	else if(choice == 1){
-		int in_row[col],column;
+		int in_row[5],column;
 		for (column = 0; column < col; column ++){
 			in_row[column]= atoi(argv[column+5]);
 		}
 		argc-=5;
 		argc-=col;
-		int testcase[argc],i;
+		int testcase[100],i;
 		for(i=0; i<argc;i++){
 			testcase[i] = atoi(argv[i+5+col]);
 		}
@@ -108,13 +136,13 @@ int main(int argc, char *argv[]) {
 		insertRow(in_row,a,loc,row,col);
 	}
 	else if(choice == 3){
-		int in_col[row],r;
+		int in_col[5],r;
 		for (r = 0; r < row; r ++){
 			in_col[r]= atoi(argv[r+5]);
 		}
 		argc-=5;
 		argc-=row;
-		int testcase[argc],i;
+		int testcase[100],i;
 		for(i=0; i<argc;i++){
 			testcase[i] = atoi(argv[i+5+row]);
 		}

@@ -51,7 +51,26 @@ void Ex3(int in_arr[], int n){
 	int a[SIZE][SIZE];
 	Array2Dconverter(in_arr,a,n,n);
 	//Your codes here
-	
+	int i,j;
+	for(int i=0;i<n;i++){
+		for(int j=i+1;j<n;j++){
+			if(a[j][j]<a[i][i]){
+				int tam=a[i][i];
+				a[i][i]=a[j][j];
+				a[j][j]=tam;
+			}
+		}
+	}
+	for (int i=n-1,j=0; i>0,j<n;i--,j++){
+		for(int m=i-1, k=j+1;m>1, k<n-1;m--,k++){
+			if(a[i][j]<a[m][k]){
+				int tam=a[m][k];
+				a[m][k]=a[i][j];
+				a[i][j]=tam;
+			}
+		}
+
+	}
 	printArray(a,n,n);
 }
 
@@ -59,7 +78,7 @@ int main(int argc, char *argv[]) {
 	//testing variable, applying it to your algorithm for auto-evaluating
 	int edge = atoi(argv[1]);
 	argc-=2;
-	int testcase[argc],i;
+	int testcase[100],i;
 	for(i=0; i<argc;i++){
 		testcase[i] = atoi(argv[i+2]);
 	}
